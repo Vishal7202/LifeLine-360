@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLine360* - Doctor Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        main {
+            padding: 2rem;
+            background-color: white;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #doctor-dashboard {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            color: #4CAF50;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul li button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        ul li button:hover {
+            background-color: #45a049;
+        }
+
+        /* Search Bar */
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Start Consultation Button */
+        #start-consultation {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #start-consultation:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LifeLine360* - Doctor Dashboard</h1>
+        <nav>
+            <a href="index.html">Home</a> | 
+            <a href="login.html">Login/Register</a> |
+            <a href="doctor.html">Doctors</a> |
+            <a href="pharmacy.html">Pharmacy</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="doctor-dashboard">
+            <h2>Welcome, Dr. Smith!</h2>
+
+            <div id="appointments">
+                <h3>Upcoming Appointments</h3>
+                <ul>
+                    <li>John Doe - 25 May, 10:00 AM - <button class="view-btn">View</button></li>
+                    <li>Jane Doe - 26 May, 1:00 PM - <button class="view-btn">View</button></li>
+                </ul>
+            </div>
+
+            <div id="patients">
+                <h3>Patient Records</h3>
+                <input type="text" id="patient-search" placeholder="Search Patients" onkeyup="searchPatients()">
+                <ul id="patient-list">
+                    <li>John Doe - <button class="view-btn">View Record</button></li>
+                    <li>Jane Doe - <button class="view-btn">View Record</button></li>
+                    <li>Michael Johnson - <button class="view-btn">View Record</button></li>
+                    <li>Emily Davis - <button class="view-btn">View Record</button></li>
+                </ul>
+            </div>
+
+            <div id="consultations">
+                <h3>Start Consultation</h3>
+                <button id="start-consultation">Begin New Consultation</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LifeLine360*</p>
+    </footer>
+
+    <script>
+        // Search Patients Functionality
+        function searchPatients() {
+            const searchInput = document.getElementById('patient-search').value.toLowerCase();
+            const patientList = document.getElementById('patient-list');
+            const patients = patientList.getElementsByTagName('li');
+
+            for (let i = 0; i < patients.length; i++) {
+                const patientName = patients[i].innerText.toLowerCase();
+                if (patientName.includes(searchInput)) {
+                    patients[i].style.display = "";
+                } else {
+                    patients[i].style.display = "none";
+                }
+            }
+        }
+
+        // View Record Button Click Action
+        document.querySelectorAll('.view-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                alert("Viewing patient record...");
+            });
+        });
+
+        // Start New Consultation Button Click Action
+        document.getElementById('start-consultation').addEventListener('click', () => {
+            alert("Starting a new consultation...");
+        });
+    </script>
+</body>
+</html>

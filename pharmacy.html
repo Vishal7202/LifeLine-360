@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLine360* - Pharmacy</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        main {
+            padding: 2rem;
+            background-color: white;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #pharmacy {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            color: #4CAF50;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul li button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        ul li button:hover {
+            background-color: #45a049;
+        }
+
+        /* Search Bar */
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LifeLine360* - Pharmacy</h1>
+        <nav>
+            <a href="index.html">Home</a> | 
+            <a href="login.html">Login/Register</a> |
+            <a href="doctor.html">Doctors</a> |
+            <a href="pharmacy.html">Pharmacy</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="pharmacy">
+            <h2>Pharmacy Dashboard</h2>
+
+            <div id="prescriptions">
+                <h3>New Prescriptions</h3>
+                <ul>
+                    <li>John Doe - #12345 - <button class="view-btn">View</button> | <button class="accept-btn">Accept</button> | <button class="reject-btn">Reject</button></li>
+                    <li>Jane Doe - #12346 - <button class="view-btn">View</button> | <button class="accept-btn">Accept</button> | <button class="reject-btn">Reject</button></li>
+                </ul>
+            </div>
+
+            <div id="inventory">
+                <h3>Inventory Management</h3>
+                <input type="text" id="medicine-search" placeholder="Search Medicines" onkeyup="searchMedicines()">
+                <ul id="inventory-list">
+                    <li>Paracetamol - 100 units - <button class="update-btn">Update Stock</button></li>
+                    <li>Amoxicillin - 50 units - <button class="update-btn">Update Stock</button></li>
+                </ul>
+            </div>
+
+            <div id="delivery">
+                <h3>Delivery Management</h3>
+                <ul>
+                    <li>John Doe - 123 Street - Pending - <button class="assign-btn">Assign Driver</button></li>
+                    <li>Jane Doe - 456 Avenue - In Progress - <button class="track-btn">Track</button></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LifeLine360*</p>
+    </footer>
+
+    <script>
+        // Prescription button actions
+        document.querySelectorAll('.view-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("Viewing prescription details...");
+            });
+        });
+
+        document.querySelectorAll('.accept-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("Prescription accepted.");
+            });
+        });
+
+        document.querySelectorAll('.reject-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("Prescription rejected.");
+            });
+        });
+
+        // Medicine Search Functionality
+        function searchMedicines() {
+            const searchInput = document.getElementById('medicine-search').value.toLowerCase();
+            const inventoryList = document.getElementById('inventory-list');
+            const medicines = inventoryList.getElementsByTagName('li');
+
+            for (let i = 0; i < medicines.length; i++) {
+                const medicineName = medicines[i].innerText.toLowerCase();
+                if (medicineName.includes(searchInput)) {
+                    medicines[i].style.display = "";
+                } else {
+                    medicines[i].style.display = "none";
+                }
+            }
+        }
+
+        // Stock Update Button
+        document.querySelectorAll('.update-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("Updating stock...");
+            });
+        });
+
+        // Delivery button actions
+        document.querySelectorAll('.assign-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("Assigning driver to the delivery...");
+            });
+        });
+
+        document.querySelectorAll('.track-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("Tracking the delivery...");
+            });
+        });
+    </script>
+</body>
+</html>
